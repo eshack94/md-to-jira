@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # Author: Elijah Shackelford (eshack94)
 
@@ -15,6 +15,7 @@
 
 import sys
 import re
+
 
 def convert_line(line):
     # Convert headers
@@ -51,6 +52,7 @@ def convert_line(line):
 
     return line
 
+
 def process_code_block(match):
     lang = match.group(1)
     code = match.group(2)
@@ -58,6 +60,7 @@ def process_code_block(match):
         return f'{{code:{lang}}}\n{code}{{code}}'
     else:
         return f'{{code}}\n{code}{{code}}'
+
 
 def markdown_to_jira(file_path):
     with open(file_path, "r") as md_file:
@@ -82,6 +85,7 @@ def markdown_to_jira(file_path):
 
         print(jira_line, end='')
 
+
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("\n".join(line.strip() for line in """
@@ -98,7 +102,6 @@ if __name__ == "__main__":
         python md_to_jira.py README.md | pbcopy
         """.split("\n")))
         sys.exit(1)
-
 
     markdown_file_path = sys.argv[1]
     markdown_to_jira(markdown_file_path)
