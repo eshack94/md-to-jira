@@ -15,7 +15,6 @@
 
 import sys
 import re
-import textwrap
 
 def convert_line(line):
     # Convert headers
