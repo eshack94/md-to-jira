@@ -40,32 +40,32 @@ Below are usage instructions with some simple examples. For each item, the usage
 
 ```bash
 # Convert a markdown file to Jira/Confluence markup and print to stdout
-python md_to_jira.py <markdown_file>
-python md_to_jira.py README.md
+python3 md_to_jira.py <markdown_file>
+python3 md_to_jira.py README.md
 ```
 
 ```bash
 # Convert a markdown file to Jira/Confluence markup and save to a file
-python md_to_jira.py <markdown_file> > <jira_file>
-python md_to_jira.py README.md > README.jira
+python3 md_to_jira.py <markdown_file> > <jira_file>
+python3 md_to_jira.py README.md > README.jira
 ```
 
 ```bash
 # Convert a markdown file to Jira/Confluence markup and copy to clipboard (MacOS)
-python md_to_jira.py <markdown_file> | pbcopy
-python md_to_jira.py README.md | pbcopy
+python3 md_to_jira.py <markdown_file> | pbcopy
+python3 md_to_jira.py README.md | pbcopy
 ```
 
 ```bash
 # Convert a markdown file to Jira/Confluence markup and copy to clipboard (Linux)
-python md_to_jira.py <markdown_file | xclip -selection clipboard
-python md_to_jira.py README.md | xclip -selection clipboard
+python3 md_to_jira.py <markdown_file | xclip -selection clipboard
+python3 md_to_jira.py README.md | xclip -selection clipboard
 ```
 
 ```bash
 # Convert a markdown file to Jira/Confluence markup and copy to clipboard (Windows)
-python md_to_jira.py <markdown_file | clip
-python md_to_jira.py README.md | clip
+python3 md_to_jira.py <markdown_file | clip
+python3 md_to_jira.py README.md | clip
 ```
 
 ## Features (implemented and planned)

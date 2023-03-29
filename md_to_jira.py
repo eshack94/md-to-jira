@@ -9,9 +9,9 @@
 # to the same file.
 
 # Usage:
-# python md_to_jira.py <markdown_file>
-# python md_to_jira.py <markdown_file> > <jira_file>
-# python md_to_jira.py <markdown_file> | pbcopy
+# python3 md_to_jira.py <markdown_file>
+# python3 md_to_jira.py <markdown_file> > <jira_file>
+# python3 md_to_jira.py <markdown_file> | pbcopy
 
 import sys
 import re
@@ -90,16 +90,16 @@ if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("\n".join(line.strip() for line in """
         Usage:
-        python md_to_jira.py <markdown_file>
-        python md_to_jira.py <markdown_file> > <jira_file>
-        python md_to_jira.py <markdown_file> | pbcopy
+        python3 md_to_jira.py <markdown_file>
+        python3 md_to_jira.py <markdown_file> > <jira_file>
+        python3 md_to_jira.py <markdown_file> | pbcopy
         """.split("\n")))
 
         print("\n".join(line.strip() for line in """
         Examples:
-        python md_to_jira.py README.md
-        python md_to_jira.py README.md > README.jira
-        python md_to_jira.py README.md | pbcopy
+        python3 md_to_jira.py README.md
+        python3 md_to_jira.py README.md > README.jira
+        python3 md_to_jira.py README.md | pbcopy
         """.split("\n")))
         sys.exit(1)
 
