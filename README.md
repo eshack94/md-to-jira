@@ -83,7 +83,7 @@ python md_to_jira.py README.md | clip
 - [x] Add support for task lists
     * **Note**: Added, but this is not supported by JIRA native markup.
 
-### Feature Roadmap (planned)
+### Feature Roadmap (planned) and other TODOs
 - [ ] Add support for indented code blocks
     - [ ] Do not convert headers in indented code blocks
 - [ ] Add support for tables
@@ -98,6 +98,7 @@ python md_to_jira.py README.md | clip
 - [ ] Add `jira_to_md.py` to convert JIRA/Confluence markup to GitHub-flavored Markdown (GFM)
 - [ ] Add unit tests
 - [ ] Refactor and clean up code once all basic features are implemented
+- [ ] Add GitHub Actions config to run unit tests, and do flake8 linting and code style checks
 - [ ] **Other features TBD**
 
 ### Why did I start this mini-project?
