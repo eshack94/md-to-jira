@@ -100,8 +100,14 @@ python md_to_jira.py README.md | clip
 - [ ] Refactor and clean up code once all basic features are implemented
 - [ ] **Other features TBD**
 
-#### Why did I start this mini-project?
+### Why did I start this mini-project?
 
 This project was created as a way to avoid having to use Atlassian's custom markup syntax.
 
 I wanted to be able to write Confluence documentation and JIRA updates using Github-flavored Markdown, and then have a simple way to convert it without having to use an online converter, browser extension, or any third-party libraries or dependencies.
+
+## Additional Resources
+* [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+* [GitHub Flavored Markdown Spec](https://github.github.com/gfm/)
+* [Atlassian Text Formatting Notation Help](https://jira.atlassian.com/secure/WikiRendererHelpAction.jspa?section=all)
+* [Confluence Wiki Markup](https://confluence.atlassian.com/doc/confluence-wiki-markup-251003035.html)
