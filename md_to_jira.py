@@ -86,8 +86,10 @@ def markdown_to_jira(file_path):
     content = convert_multiline_elements(content)
 
     # Process the lines
-    # add flag to keep track of whether we're in a code block or not
+    # add toggle flag to keep track of whether we're in a code block or not
     # so we don't convert # characters in code blocks
+    # toggles on when we enter a code block and toggles off when we exit
+    # toggle state determines whether we convert the line or not
     in_code_block = False
     jira_lines = []
     for line in content.splitlines():
