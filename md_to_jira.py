@@ -86,7 +86,7 @@ def markdown_to_jira(file_path):
     content = convert_multiline_elements(content)
 
     # Process the lines
-    # keep track of whether we're in a code block or not
+    # add flag to keep track of whether we're in a code block or not
     # so we don't convert # characters in code blocks
     in_code_block = False
     jira_lines = []
@@ -101,6 +101,7 @@ def markdown_to_jira(file_path):
     # Print the converted lines
     for jira_line in jira_lines:
         print(jira_line)
+
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
