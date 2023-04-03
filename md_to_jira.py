@@ -2,6 +2,8 @@
 
 # Author: Elijah Shackelford (eshack94)
 
+# Description:
+#
 # This script converts a markdown file to Jira/Confluence markup syntax.
 # It will write to stdout, so you can redirect the output to a file if desired.
 #
@@ -47,9 +49,6 @@ def convert_line(line):
     # Convert GFM task lists
     line = re.sub(r'^\s*-\s*\[(x|X| )\]', lambda match: f'[{match.group(1)}]', line)
 
-    # Convert fenced code blocks
-    line = re.sub(r'```\s*([\s\S]*?)```', r'{code}\1{code}', line)
-
     return line
 
 
@@ -57,34 +56,30 @@ def process_code_block(match):
     lang = match.group(1)
     code = match.group(2)
     if lang:
-        return f'{{code:{lang}}}\n{code}{{code}}'
+        return f'{{code:{lang}}}\n{code}\n{{code}}'
     else:
-        return f'{{code}}\n{code}{{code}}'
+        return f'{{code}}\n{code}\n{{code}}'
+
+
+def convert_multiline_elements(content):
+    # Convert multiline fenced code blocks
+    content = re.sub(r'```(\w+)?\n(.*?)\n```', process_code_block, content, flags=re.MULTILINE | re.DOTALL)
+    return content
 
 
 def markdown_to_jira(file_path):
     with open(file_path, "r") as md_file:
-        content = md_file.readlines()
+        content = md_file.read()
 
-    in_code_block = False
-    for line in content:
-        # Check if we're entering or exiting a fenced code block
-        # Uses toggle logic. When we enter a code block, we set the flag to True.
-        # When we exit a code block, we set the flag to False.
-        if line.strip().startswith("```"):
-            in_code_block = not in_code_block
+    # Convert multi-line fenced code blocks
+    content = convert_multiline_elements(content)
 
-            # Process the code block line
-            jira_line = convert_line(line)
-        elif not in_code_block:
-            # If not inside a code block, process the line normally
-            jira_line = convert_line(line)
-        else:
-            # If inside a code block, don't process the line and keep it as is
-            jira_line = line
+    # Process the lines
+    jira_lines = [convert_line(line) for line in content.splitlines()]
 
-        print(jira_line, end='')
-
+    # Print the converted lines
+    for jira_line in jira_lines:
+        print(jira_line)
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
