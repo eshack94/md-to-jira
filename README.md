@@ -74,6 +74,8 @@ python3 md_to_jira.py README.md | clip
 - [x] Add support for headers 1-6
 - [x] Add support for fenced code blocks
     - [x] Do not convert headers in fenced code blocks
+- [x] Add support for indented code blocks
+    - [x] Do not convert headers in indented code blocks
 - [x] Add support for inline code (backticks) - should be converted to JIRA's monospace syntax
 - [x] Add support for bold text
 - [x] Add support for italic text
@@ -84,8 +86,6 @@ python3 md_to_jira.py README.md | clip
     * **Note**: Added, but this is not supported by JIRA native markup.
 
 ### Feature Roadmap (planned) and other TODOs
-- [ ] Add support for indented code blocks
-    - [ ] Do not convert headers in indented code blocks
 - [ ] Add support for tables
 - [ ] Add support for horizontal rules
 - [ ] Add support for ordered lists

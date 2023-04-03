@@ -75,7 +75,7 @@ def process_indented_code_block(match):
     code = match.group(1)
     # Remove the leading 4 spaces or tab from each line
     code = re.sub(r'^ {4}|\t', '', code, flags=re.MULTILINE)
-    return f'{{code}}\n{code}{{code}}'
+    return f'{{code}}\n{code}{{code}}\n'
 
 
 def markdown_to_jira(file_path):
@@ -86,7 +86,17 @@ def markdown_to_jira(file_path):
     content = convert_multiline_elements(content)
 
     # Process the lines
-    jira_lines = [convert_line(line) for line in content.splitlines()]
+    # keep track of whether we're in a code block or not
+    # so we don't convert # characters in code blocks
+    in_code_block = False
+    jira_lines = []
+    for line in content.splitlines():
+        if line.startswith("```") or line.startswith("{code"):
+            in_code_block = not in_code_block
+
+        if not in_code_block:
+            line = convert_line(line)
+        jira_lines.append(line)
 
     # Print the converted lines
     for jira_line in jira_lines:
