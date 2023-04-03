@@ -114,8 +114,9 @@ python3 jira_to_md.py README.jira | clip
 - [x] Add support for unordered lists
 - [x] Add support for in-line style links
 - [x] Add support for task lists
-- [x] Add `jira_to_md.py` to convert JIRA/Confluence markup to GitHub-flavored Markdown (GFM)
     * **Note**: Added, but this is not supported by JIRA native markup.
+- [x] Add `jira_to_md.py` to convert JIRA/Confluence markup to GitHub-flavored Markdown (GFM)
+
 
 ### Feature Roadmap
 - [ ] Add support for tables
