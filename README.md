@@ -26,11 +26,10 @@ You could alternatively add it to a `~/scripts/` directory and create a `md_to_j
 
 ```bash
 alias md_to_jira="python3 ~/scripts/md_to_jira.py"
+alias jira_to_md="python3 ~/scripts/jira_to_md.py"
 ```
 
 It can also be run directly from the cloned repository directory, but this is not recommended.
-
-> **NOTE:** I'll update these instructions when `jira_to_md.py` is added.
 
 ## Usage
 
@@ -42,30 +41,50 @@ Below are usage instructions with some simple examples. For each item, the usage
 # Convert a markdown file to Jira/Confluence markup and print to stdout
 python3 md_to_jira.py <markdown_file>
 python3 md_to_jira.py README.md
+
+# Convert a Jira/Confluence markup file to markdown and print to stdout
+python3 jira_to_md.py <jira_file>
+python3 jira_to_md.py README.jira
 ```
 
 ```bash
 # Convert a markdown file to Jira/Confluence markup and save to a file
 python3 md_to_jira.py <markdown_file> > <jira_file>
 python3 md_to_jira.py README.md > README.jira
+
+# Convert a Jira/Confluence markup file to markdown and save to a file
+python3 jira_to_md.py <jira_file> > <markdown_file>
+python3 jira_to_md.py README.jira > README.md
 ```
 
 ```bash
 # Convert a markdown file to Jira/Confluence markup and copy to clipboard (MacOS)
 python3 md_to_jira.py <markdown_file> | pbcopy
 python3 md_to_jira.py README.md | pbcopy
+
+# Convert a Jira/Confluence markup file to markdown and copy to clipboard (MacOS)
+python3 jira_to_md.py <jira_file> | pbcopy
+python3 jira_to_md.py README.jira | pbcopy
 ```
 
 ```bash
 # Convert a markdown file to Jira/Confluence markup and copy to clipboard (Linux)
 python3 md_to_jira.py <markdown_file | xclip -selection clipboard
 python3 md_to_jira.py README.md | xclip -selection clipboard
+
+# Convert a Jira/Confluence markup file to markdown and copy to clipboard (Linux)
+python3 jira_to_md.py <jira_file | xclip -selection clipboard
+python3 jira_to_md.py README.jira | xclip -selection clipboard
 ```
 
 ```bash
 # Convert a markdown file to Jira/Confluence markup and copy to clipboard (Windows)
 python3 md_to_jira.py <markdown_file | clip
 python3 md_to_jira.py README.md | clip
+
+# Convert a Jira/Confluence markup file to markdown and copy to clipboard (Windows)
+python3 jira_to_md.py <jira_file | clip
+python3 jira_to_md.py README.jira | clip
 ```
 
 ## Features (implemented and planned)
@@ -83,6 +102,7 @@ python3 md_to_jira.py README.md | clip
 - [x] Add support for unordered lists
 - [x] Add support for in-line style links
 - [x] Add support for task lists
+- [x] Add `jira_to_md.py` to convert JIRA/Confluence markup to GitHub-flavored Markdown (GFM)
     * **Note**: Added, but this is not supported by JIRA native markup.
 
 ### Feature Roadmap (planned) and other TODOs
@@ -95,11 +115,16 @@ python3 md_to_jira.py README.md | clip
 - [ ] Add support for in-line style links with titles (if possible)
 - [ ] Add support for reference style links
 - [ ] Add support for inline HTML
-- [ ] Add `jira_to_md.py` to convert JIRA/Confluence markup to GitHub-flavored Markdown (GFM)
 - [ ] Add unit tests
 - [ ] Refactor and clean up code once all basic features are implemented
-- [ ] Add GitHub Actions config to run unit tests, and do flake8 linting and code style checks
-- [ ] **Other features TBD**
+- [ ] Add GitHub Actions config to run unit tests, flake8 linting, and other checks
+- [ ] Maybe: Add argparse support for command line options
+- [ ] Housekeeping action items:
+    - [ ] Enforce branch protection rules after setting up GitHub Actions and adding unit tests.
+        - [ ] Require status checks to pass before merging.
+        - [ ] Require pull requests to be reviewed and approved before merging.
+        - [ ] Require branches to be up to date before merging.
+        - [ ] Add git tags for releases.
 
 ### Why did I start this mini-project?
 
