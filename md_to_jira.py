@@ -52,6 +52,16 @@ def convert_line(line):
     return line
 
 
+def convert_multiline_elements(content):
+    # Convert multiline fenced code blocks
+    content = re.sub(r'```(\w+)?\n(.*?)\n```', process_code_block, content, flags=re.MULTILINE | re.DOTALL)
+
+    # Convert indented code blocks
+    content = re.sub(r'((?:^ {4}.*\n?)+)', process_indented_code_block, content, flags=re.MULTILINE)
+
+    return content
+
+
 def process_code_block(match):
     lang = match.group(1)
     code = match.group(2)
@@ -61,17 +71,18 @@ def process_code_block(match):
         return f'{{code}}\n{code}\n{{code}}'
 
 
-def convert_multiline_elements(content):
-    # Convert multiline fenced code blocks
-    content = re.sub(r'```(\w+)?\n(.*?)\n```', process_code_block, content, flags=re.MULTILINE | re.DOTALL)
-    return content
+def process_indented_code_block(match):
+    code = match.group(1)
+    # Remove the leading 4 spaces or tab from each line
+    code = re.sub(r'^ {4}|\t', '', code, flags=re.MULTILINE)
+    return f'{{code}}\n{code}{{code}}'
 
 
 def markdown_to_jira(file_path):
     with open(file_path, "r") as md_file:
         content = md_file.read()
 
-    # Convert multi-line fenced code blocks
+    # Convert multiline elements
     content = convert_multiline_elements(content)
 
     # Process the lines
