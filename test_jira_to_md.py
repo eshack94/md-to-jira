@@ -28,10 +28,8 @@ class TestJiraToMd(unittest.TestCase):
         self.assertEqual(convert_line(' [ ] task'), '- [ ] task')
         self.assertEqual(convert_line(' [X] task'), '- [X] task')
 
-
     def test_convert_multiline_elements(self):
         self.assertEqual(convert_multiline_elements('{code:python}\nprint("Hello World!")\n{code}'), '```python\nprint("Hello World!")\n```')
-
 
     def test_process_code_block(self):
         code_block_pattern = r'{code(?:\:([a-zA-Z]+))?}\n(.*?){code}'
