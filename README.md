@@ -129,6 +129,8 @@ python3 jira_to_md.py README.jira | clip
 - [ ] Add support for reference style links
 - [ ] Add support for inline HTML
 - [ ] Add unit tests
+    - [ ] Add unit tests for `md_to_jira.py`
+    - [x] Add unit tests for `jira_to_md.py`
 - [ ] Maybe: Add argparse support for command line options
 - [ ] **_Other TBD_**
 
