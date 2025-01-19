@@ -17,6 +17,7 @@
 
 import sys
 import re
+import uuid
 
 
 def convert_line(line):
@@ -29,7 +30,7 @@ def convert_line(line):
     line = re.sub(r'^#\s*(.+)', r'h1. \1', line)
 
     # Convert bold
-    bold_placeholder = "bold78c10ae05c702eb1cbold"
+    bold_placeholder = f"BOLD_{uuid.uuid4()}_BOLD"
     line = re.sub(r'\*\*(.+?)\*\*', r'{placeholder}\1{placeholder}'.format(placeholder=bold_placeholder), line)
     line = re.sub(r'__(.+?)__', r'{placeholder}\1{placeholder}'.format(placeholder=bold_placeholder), line)
 
