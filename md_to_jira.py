@@ -17,6 +17,7 @@
 
 import sys
 import re
+import uuid
 
 
 def convert_line(line):
@@ -28,11 +29,17 @@ def convert_line(line):
     line = re.sub(r'^#{2}\s*(.+)', r'h2. \1', line)
     line = re.sub(r'^#\s*(.+)', r'h1. \1', line)
 
-    # Convert bold and italic
-    line = re.sub(r'\*\*(.+?)\*\*', r'*\1*', line)
-    line = re.sub(r'__(.+?)__', r'*\1*', line)
+    # Convert bold
+    bold_placeholder = f"BOLD_{uuid.uuid4()}_BOLD"
+    line = re.sub(r'\*\*(.+?)\*\*', r'{placeholder}\1{placeholder}'.format(placeholder=bold_placeholder), line)
+    line = re.sub(r'__(.+?)__', r'{placeholder}\1{placeholder}'.format(placeholder=bold_placeholder), line)
+
+    # Convert italic
     line = re.sub(r'\*(.+?)\*', r'_\1_', line)
     line = re.sub(r'_(.+?)_', r'_\1_', line)
+
+    # Convert placeholder back to bold
+    line = re.sub(r'{placeholder}(.+?){placeholder}'.format(placeholder=bold_placeholder), r'*\1*', line)
 
     # Convert inline code
     line = re.sub(r'`([^`]+)`', r'{{\1}}', line)
